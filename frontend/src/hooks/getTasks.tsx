@@ -2,10 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 interface Task {
-  id: {
-    timestamp: number;
-    data: string;
-  };
+  id: string;
   name: string;
   description: string;
   done: boolean;

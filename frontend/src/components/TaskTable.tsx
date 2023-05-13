@@ -5,6 +5,7 @@ import TaskRow from './TaskRow';
 
 const TaskTable: React.FC = () => {
     const tasks = useGetTasks();
+    
 
     return (
         <table>
@@ -18,7 +19,7 @@ const TaskTable: React.FC = () => {
             </thead>
             <tbody>
                 {tasks.map(task => (
-                    <TaskRow key={task.id.timestamp} task={task} />
+                    <TaskRow key={task.id} task={task} />
                 ))}
             </tbody>
         </table>
