@@ -29,7 +29,7 @@ public class TaskController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Task> getTask(@PathVariable ObjectId id) {
+    public ResponseEntity<Task> getTask(@PathVariable String id) {
         Task taskFound = taskService.getById(id);
         if (taskFound != null) {
             return new ResponseEntity<Task>(taskFound, HttpStatus.FOUND);
@@ -39,12 +39,12 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Task> tickTask(@PathVariable ObjectId id) {
+    public ResponseEntity<Task> tickTask(@PathVariable String id) {
         return new ResponseEntity<Task>(taskService.markTaskAsDone(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Task> deleteTask(@PathVariable ObjectId id) {
+    public ResponseEntity<Task> deleteTask(@PathVariable String id) {
         Task existingTask = taskService.getById(id);
         if (existingTask == null) {
             return ResponseEntity.notFound().build();

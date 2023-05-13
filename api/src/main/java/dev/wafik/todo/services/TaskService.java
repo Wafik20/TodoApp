@@ -2,7 +2,7 @@ package dev.wafik.todo.services;
 
 import dev.wafik.todo.model.Task;
 import dev.wafik.todo.repository.TaskRepository;
-import org.bson.types.ObjectId;
+//import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,7 @@ public class TaskService {
         return newTask;
     }
 
-    public Task getById(ObjectId id) {
+    public Task getById(String id) {
         try {
             Optional<Task> optionalTask = tasks.findById(id);
             return optionalTask.orElse(null);
@@ -34,7 +34,7 @@ public class TaskService {
         }
     }
 
-    public Task markTaskAsDone(ObjectId id) {
+    public Task markTaskAsDone(String id) {
         Task found = getById(id);
         boolean isDone = found.isDone();
         found.setDone(!isDone);
