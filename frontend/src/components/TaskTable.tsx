@@ -1,28 +1,17 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 import useGetTasks from '../hooks/getTasks';
 import TaskRow from './TaskRow';
+import Stack from '@mui/material/Stack';
 
 const TaskTable: React.FC = () => {
     const tasks = useGetTasks();
     
 
     return (
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Done</th>
-                </tr>
-            </thead>
-            <tbody>
-                {tasks.map(task => (
-                    <TaskRow key={task.id} task={task} />
-                ))}
-            </tbody>
-        </table>
+    <Stack direction="column" spacing={2}>
+    {tasks.map(task => ( 
+         <TaskRow key={task.id} task={task} />
+    ))}
+    </Stack>
     );
 };
 
