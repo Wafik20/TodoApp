@@ -1,2 +1,2 @@
 # TodoApp
-A Todo app build using React, Spring Boot 3
+A Todo app built using React, Spring Boot 3
