@@ -58,7 +58,8 @@ const TaskRow: React.FC<Props> = ({ task, deleteTask }) => {
 
 
   return (
-    <div className='flex flex-row'>
+    <div className=''>
+      <div className='flex flex-row ml-32 mr-32'>
       <ListItemButton>
           <input
           type="checkbox"
@@ -84,9 +85,10 @@ const TaskRow: React.FC<Props> = ({ task, deleteTask }) => {
           defaultValue={getDescription}
         ></textarea>  
       </Item>   
-      <ListItemButton onClick={() => {deleteTask(task.id)}}>
-         <RiDeleteBin6Line className='w-10 h-10'></RiDeleteBin6Line>
-      </ListItemButton>  
+      <ListItemButton onClick={() => {deleteTask(task.id)}} className="transition duration-700 hover:scale-110">
+         <RiDeleteBin6Line className='w-20 h-20 text-red-500'></RiDeleteBin6Line>
+      </ListItemButton>
+      </div>
     </div>
   );
   };  

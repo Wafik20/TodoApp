@@ -41,7 +41,7 @@ const TaskTable = () => {
 
     return (
     <div>
-        <Button variant="text" className='w-20 h-20' onClick={addNewTask}><GoPlus></GoPlus></Button>
+        <Button variant="text" onClick={addNewTask} className="absolute top-5 left-10 transition duration-700 hover:scale-110"><GoPlus className='w-10 h-10 text-green-500'></GoPlus></Button>
         <Stack direction="column" spacing={3}>
             {Array.isArray(tasks) && tasks.map((task: Task) => ( 
             <TaskRow key={task.id} task={task} deleteTask={()=>deleteTask(task.id)} />
