@@ -1,22 +1,18 @@
 import { useState, useEffect, SetStateAction } from 'react';
+import Task from '../entities/Task';
 import axios from 'axios';
 import * as React from 'react';
 import Item from '@mui/material/ListItem';
 import { ListItemButton } from '@mui/material';
+import {RiDeleteBin6Line} from 'react-icons/ri';
 
-
-interface Task {
-  id: string;
-  name: string;
-  description: string;
-  done: boolean;
-}
 
 interface Props {
-    task: Task;
+    task: Task,
+    deleteTask: (id: string) => void,
   }
   
-const TaskRow: React.FC<Props> = ({ task }) => {
+const TaskRow: React.FC<Props> = ({ task, deleteTask }) => {
   const [isChecked, setIsChecked] = useState(task.done); // use state to save the checkbox status
   const [getName, setName] = useState(task.name);
   const [getDescription, setDescription] = useState(task.description);
@@ -60,6 +56,7 @@ const TaskRow: React.FC<Props> = ({ task }) => {
     }
   };
 
+
   return (
     <div className='flex flex-row'>
       <ListItemButton>
@@ -86,7 +83,10 @@ const TaskRow: React.FC<Props> = ({ task }) => {
           onBlur={(e)=> handleDescriptionChange(e.target.value)}
           defaultValue={getDescription}
         ></textarea>  
-      </Item>    
+      </Item>   
+      <ListItemButton onClick={() => {deleteTask(task.id)}}>
+         <RiDeleteBin6Line className='w-10 h-10'></RiDeleteBin6Line>
+      </ListItemButton>  
     </div>
   );
   };  

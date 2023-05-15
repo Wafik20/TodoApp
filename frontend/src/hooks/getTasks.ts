@@ -1,14 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Task from '../entities/Task';
 
-interface Task {
-  id: string;
-  name: string;
-  description: string;
-  done: boolean;
-}
-
-function useGetTasks() {
+const useGetTasks = () => {
     const [tasks, setTasks] = useState<Task[]>([]);
 
     useEffect(() => {
@@ -20,7 +14,7 @@ function useGetTasks() {
     fetchData();
   }, []);
 
-  return tasks;
+  return {tasks, setTasks};
 }
 
 export default useGetTasks;
